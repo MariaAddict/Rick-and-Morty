@@ -1,3 +1,4 @@
+import './App.css';
 import apiEpisodes from "../../utils/EpisodesApi";
 import { useEffect } from "react";
 
@@ -14,7 +15,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="app">
       <h1>Hello</h1>
     </div>
   );

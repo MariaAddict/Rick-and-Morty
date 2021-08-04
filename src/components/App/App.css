@@ -1,0 +1,9 @@
+.app {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: rgb(1, 153, 128);
+    /* text-shadow: 0 0 5px #fff, 0 0 6px #fff, 0 0 7px #fff, 0 0 5px #e5ff00, 0 0 7px #e5ff00, 0 0 7px #e5ff00, 0 0 7px #e5ff00, 0 0 20px #e5ff00; */
+    padding-left: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
