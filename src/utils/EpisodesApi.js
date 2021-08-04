@@ -14,11 +14,29 @@ class EpisodesApi {
         this._headers = headers;
     }
 
-    getEpisodes() {
+    _getEpisodesPageOne() {
         return fetch(this._url, {
             method: 'GET',
         })
             .then(handleResponse)
+    }
+
+    _getEpisodesPageTwo() {
+        return fetch(`${this._url}?page=2`, {
+            method: 'GET',
+        })
+            .then(handleResponse)
+    }
+
+    _getEpisodesPageThree() {
+        return fetch(`${this._url}?page=3`, {
+            method: 'GET',
+        })
+            .then(handleResponse)
+    }
+
+    getEpisodes() {
+        return Promise.all([this._getEpisodesPageOne(), this._getEpisodesPageTwo(), this._getEpisodesPageThree()]);
     }
 
 }
