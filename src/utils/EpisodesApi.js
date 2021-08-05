@@ -39,6 +39,13 @@ class EpisodesApi {
         return Promise.all([this._getEpisodesPageOne(), this._getEpisodesPageTwo(), this._getEpisodesPageThree()]);
     }
 
+    getEpisodeById(id) {
+        return fetch(`https://rickandmortyapi.com/api/episode/${id}`, {
+            method: 'GET',
+        })
+            .then(handleResponse)
+    }
+
 }
 
 const apiEpisodes = new EpisodesApi(BASE_URL, {

@@ -17,6 +17,7 @@ function App() {
   const [episodesFourthSeason, setEpisodesFourthSeason] = useState([]);
   const [foundEpisodes, seyFoundEpisodes] = useState([]);
   const [isNotFound, setIsNotFound] = useState(false);
+  const [episodeById, setEpisodeById] = useState([]);
 
   useEffect(() => {
     apiEpisodes
@@ -68,6 +69,15 @@ function App() {
     }
   }
 
+  function getEpisodeById(id) {
+    apiEpisodes.getEpisodeById(id).then((data) => {
+      console.log(data);
+      setEpisodeById(data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
   return (
     <div className="app">
       <h1 className="app__title">Rick and Morty</h1>
@@ -84,7 +94,7 @@ function App() {
           <EpisodeList episodes={episodesFourthSeason} title="4 сезон" />
         </Route>
         <Route path="/episode/:id">
-          <CurrentEpisode />
+          <CurrentEpisode episode={episodeById} getEpisodeById={getEpisodeById}/>
         </Route>
       </Switch>
     </div>
