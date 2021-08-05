@@ -29,10 +29,10 @@
 
 .seach-form__input:focus {
   outline-color: inherit;
-  border-radius: 100px;
+  border-radius: 20px;
   backdrop-filter: blur(8px);
-  box-shadow: 1px 1px 1px 0 rgb(1, 153, 128);;
-  border: 3px solid rgb(1, 153, 128);;
+  box-shadow: 1px 1px 1px 0 rgb(1, 153, 128);
+  border: 3px solid rgb(1, 153, 128);
 }
 
 .seach-form__button {
