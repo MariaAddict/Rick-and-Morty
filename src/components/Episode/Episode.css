@@ -8,4 +8,5 @@
     overflow: hidden;
     position: relative;
     color: #000;
+    box-sizing: border-box;
 }

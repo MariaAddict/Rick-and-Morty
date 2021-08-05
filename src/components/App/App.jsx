@@ -60,17 +60,13 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Hello</h1>
+      <h1 className="app__title">Rick and Morty</h1>
       <SearchBlock onSubmit={handleSubmitSearch} />
-      <EpisodeList episodes={foundEpisodes} />
-      <p>1 сезон</p>
-      <EpisodeList episodes={episodesFirstSeason} />
-      <p>2 сезон</p>
-      <EpisodeList episodes={episodesSecondSeason} />
-      <p>3 сезон</p>
-      <EpisodeList episodes={episodesThirdSeason} />
-      <p>4 сезон</p>
-      <EpisodeList episodes={episodesFourthSeason} />
+      <EpisodeList episodes={foundEpisodes} title="Найденные эпизоды" />
+      <EpisodeList episodes={episodesFirstSeason} title="1 сезон" />
+      <EpisodeList episodes={episodesSecondSeason} title="2 сезон" />
+      <EpisodeList episodes={episodesThirdSeason} title="3 сезон" />
+      <EpisodeList episodes={episodesFourthSeason} title="4 сезон" />
     </div>
   );
 }

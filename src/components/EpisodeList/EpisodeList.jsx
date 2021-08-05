@@ -1,12 +1,17 @@
-import './EpisodeList.css';
-import Episode from '../Episode/Episode';
+import "./EpisodeList.css";
+import Episode from "../Episode/Episode";
 
-function EpisodeList({episodes}) {
-    return (
+function EpisodeList({ episodes, title }) {
+  return (
+    <section>
+      <h4 className="episodes-list__title">{title}</h4>
       <ul className="cards">
-        {episodes.map((episode) => <Episode key={episode.name} episode={episode} />)}
+        {episodes.map((episode) => (
+          <Episode key={episode.name} episode={episode} />
+        ))}
       </ul>
-    );
-  }
-  
-  export default EpisodeList;
+    </section>
+  );
+}
+
+export default EpisodeList;
