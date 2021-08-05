@@ -74,17 +74,13 @@ function App() {
     apiEpisodes
       .getEpisodeById(id)
       .then((data) => {
-        console.log('кол-во data',data);
         const idCharacters = data.characters.map((url) => {
           return +url.substring(url.lastIndexOf("/") + 1, url.length);
         });
 
-        apiEpisodes
-          .getCharacterByUrl(idCharacters)
-          .then((data) => {
-            console.log('кол-во персов',data.length);
-            setCharactersEpisode(data);
-          });
+        apiEpisodes.getCharacterByUrl(idCharacters).then((data) => {
+          setCharactersEpisode(data);
+        });
         setEpisodeById(data);
       })
       .catch((err) => {
@@ -102,10 +98,14 @@ function App() {
             <EpisodeList episodes={foundEpisodes} title="Найденные эпизоды" />
           )}
           {isNotFound && <NotFoundBlock />}
-          <EpisodeList episodes={episodesFirstSeason} title="1 сезон" />
-          <EpisodeList episodes={episodesSecondSeason} title="2 сезон" />
-          <EpisodeList episodes={episodesThirdSeason} title="3 сезон" />
-          <EpisodeList episodes={episodesFourthSeason} title="4 сезон" />
+          {foundEpisodes.length === 0 && (
+            <>
+              <EpisodeList episodes={episodesFirstSeason} title="1 сезон" />
+              <EpisodeList episodes={episodesSecondSeason} title="2 сезон" />
+              <EpisodeList episodes={episodesThirdSeason} title="3 сезон" />
+              <EpisodeList episodes={episodesFourthSeason} title="4 сезон" />
+            </>
+          )}
         </Route>
         <Route path="/episode/:id">
           <CurrentEpisode
