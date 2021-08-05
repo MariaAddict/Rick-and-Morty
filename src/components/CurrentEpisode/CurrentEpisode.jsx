@@ -1,8 +1,9 @@
 import "./CurrentEpisode.css";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import CardCharacter from "../CardCharacter/CardCharacter";
 
-function CurrentEpisode({ episode, getEpisodeById }) {
+function CurrentEpisode({ episode, getEpisodeById, charactersEpisode }) {
   let { id } = useParams();
 
   useEffect(() => {
@@ -14,9 +15,13 @@ function CurrentEpisode({ episode, getEpisodeById }) {
     <div className="episode">
       <h3>{episode.name}</h3>
       <p>Дата выхода: {episode.air_date}</p>
-      <p>Номер сезона: {episode.episode.slice(1, 3)} </p>
-      <p>Номер эпизода: {episode.episode.slice(4, 6)} </p>
-      <p>Персонажи</p>
+      <p>Номер эпизода: {episode.episode} </p>
+      <h4 className="episode__title-characters">Персонажи</h4>
+      <ul className="characters">
+        {charactersEpisode.map((character) => (
+          <CardCharacter key={character.id} character={character} />
+        ))}
+      </ul>
     </div>
   );
 }

@@ -18,6 +18,7 @@ function App() {
   const [foundEpisodes, seyFoundEpisodes] = useState([]);
   const [isNotFound, setIsNotFound] = useState(false);
   const [episodeById, setEpisodeById] = useState([]);
+  const [charactersEpisode, setCharactersEpisode] = useState([]);
 
   useEffect(() => {
     apiEpisodes
@@ -70,12 +71,25 @@ function App() {
   }
 
   function getEpisodeById(id) {
-    apiEpisodes.getEpisodeById(id).then((data) => {
-      console.log(data);
-      setEpisodeById(data);
-    }).catch((err) => {
-      console.log(err);
-    });
+    apiEpisodes
+      .getEpisodeById(id)
+      .then((data) => {
+        console.log('кол-во data',data);
+        const idCharacters = data.characters.map((url) => {
+          return +url.substring(url.lastIndexOf("/") + 1, url.length);
+        });
+
+        apiEpisodes
+          .getCharacterByUrl(idCharacters)
+          .then((data) => {
+            console.log('кол-во персов',data.length);
+            setCharactersEpisode(data);
+          });
+        setEpisodeById(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -94,7 +108,11 @@ function App() {
           <EpisodeList episodes={episodesFourthSeason} title="4 сезон" />
         </Route>
         <Route path="/episode/:id">
-          <CurrentEpisode episode={episodeById} getEpisodeById={getEpisodeById}/>
+          <CurrentEpisode
+            episode={episodeById}
+            getEpisodeById={getEpisodeById}
+            charactersEpisode={charactersEpisode}
+          />
         </Route>
       </Switch>
     </div>

@@ -46,6 +46,13 @@ class EpisodesApi {
             .then(handleResponse)
     }
 
+    getCharacterByUrl(idCharacters) {
+        return fetch(`https://rickandmortyapi.com/api/character/${idCharacters}`, {
+            method: 'GET',
+        })
+            .then(handleResponse)
+    }
+
 }
 
 const apiEpisodes = new EpisodesApi(BASE_URL, {

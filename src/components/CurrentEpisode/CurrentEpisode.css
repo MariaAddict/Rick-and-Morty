@@ -10,3 +10,21 @@
     color: #000;
     box-sizing: border-box;
 }
+
+.characters {
+    width: 100%;
+    margin: 64px 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 16px 16px;
+    gap: 16px 16px;
+    justify-items: center;
+    list-style-type: none;
+}
+
+.episode__title-characters {
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: bold;
+}
