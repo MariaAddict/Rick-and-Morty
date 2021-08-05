@@ -1,0 +1,112 @@
+.seach-form {
+  max-width: 608px;
+  margin: 0 auto;
+  padding: 64px 0 80px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.seach-form__input {
+  max-width: 608px;
+  width: 100%;
+  min-height: 64px;
+  background: #ffffff;
+  border: 1px solid #d1d2d6;
+  box-sizing: border-box;
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a1b22;
+  padding-left: 24px;
+  padding-right: 165px;
+}
+
+.seach-form__input:focus {
+  outline-color: inherit;
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+  box-shadow: 1px 1px 1px 0 rgb(1, 153, 128);;
+  border: 3px solid rgb(1, 153, 128);;
+}
+
+.seach-form__button {
+  max-width: 168px;
+  width: 100%;
+  background-color: rgb(1, 153, 128);;
+  border: none;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  border-radius: 20px;
+  margin-left: calc(-27%);
+  color: #ffffff;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.seach-form__button:hover {
+  background-color: #023a29;
+  transition: background-color 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.seach-form__button:active {
+  background-color: rgb(1, 31, 26);
+}
+
+.seach-form__error {
+  box-sizing: border-box;
+  display: block;
+}
+
+.seach-form__error_visible {
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: start;
+  color: #ffffff;
+  align-self: center;
+  margin-left: 3px;
+}
+
+@media screen and (max-width: 960px) {
+  .seach-form__input {
+    max-width: 448px;
+    padding-right: 155px;
+  }
+
+  .seach-form__button {
+    max-width: 160px;
+    margin-left: calc(-25%);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .seach-form__input {
+    padding-right: 150px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .seach-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .seach-form__input {
+    max-width: 288px;
+    min-height: 56px;
+    margin-bottom: 16px;
+    padding-right: 0;
+  }
+
+  .seach-form__button {
+    max-width: 288px;
+    min-height: 56px;
+    margin-left: 0;
+  }
+}
