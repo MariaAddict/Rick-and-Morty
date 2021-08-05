@@ -3,6 +3,7 @@ import apiEpisodes from "../../utils/EpisodesApi";
 import { useState, useEffect } from "react";
 import EpisodeList from "../EpisodeList/EpisodeList";
 import SearchBlock from "../SearchBlock/SearchBlock";
+import NotFoundBlock from "../NotFoundBlock/NotFoundBlock"
 
 function App() {
   const [episodes, setEpisodes] = useState([]);
@@ -11,6 +12,7 @@ function App() {
   const [episodesThirdSeason, setEpisodesThirdSeason] = useState([]);
   const [episodesFourthSeason, setEpisodesFourthSeason] = useState([]);
   const [foundEpisodes, seyFoundEpisodes] = useState([]);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   useEffect(() => {
     apiEpisodes
@@ -48,12 +50,16 @@ function App() {
   }
 
   function handleSubmitSearch(word) {
+    setIsNotFound(false);
     if (word === "") {
       seyFoundEpisodes([]);
     } else {
       const foundEpisodesByWord = episodes.filter((item) =>
         item.name.toLowerCase().includes(word.toLowerCase())
       );
+      if (foundEpisodesByWord.length === 0) {
+        setIsNotFound(true);
+      }
       seyFoundEpisodes(foundEpisodesByWord);
     }
   }
@@ -62,7 +68,8 @@ function App() {
     <div className="app">
       <h1 className="app__title">Rick and Morty</h1>
       <SearchBlock onSubmit={handleSubmitSearch} />
-      <EpisodeList episodes={foundEpisodes} title="Найденные эпизоды" />
+      {(foundEpisodes.length !== 0 ) && <EpisodeList episodes={foundEpisodes} title="Найденные эпизоды" />}
+      {  isNotFound && <NotFoundBlock /> }
       <EpisodeList episodes={episodesFirstSeason} title="1 сезон" />
       <EpisodeList episodes={episodesSecondSeason} title="2 сезон" />
       <EpisodeList episodes={episodesThirdSeason} title="3 сезон" />

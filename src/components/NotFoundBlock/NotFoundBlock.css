@@ -1,0 +1,14 @@
+.not-found-block {
+    max-width: 886px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 0 auto 80px;
+    padding: 50px 0;
+}
+
+.not-found-block__title {
+    font-size: 30px;
+    line-height: 1.1;
+    margin: 0;
+    padding: 0;
+}
