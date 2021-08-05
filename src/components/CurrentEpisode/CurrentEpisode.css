@@ -1,17 +1,12 @@
-.card {
-    max-width: 282px;
+.episode {
+    max-width: 886px;
     width: 100%;
     background-color: #fff;
     border-radius: 10px;
-    margin: 0;
+    margin: 50px auto;
     padding: 20px;
     overflow: hidden;
     position: relative;
-    box-sizing: border-box;
-}
-
-.card__link {
-    text-decoration: none;
     color: #000;
     box-sizing: border-box;
 }

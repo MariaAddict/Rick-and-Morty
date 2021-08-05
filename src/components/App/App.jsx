@@ -1,9 +1,13 @@
 import "./App.css";
-import apiEpisodes from "../../utils/EpisodesApi";
+
 import { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
+
+import apiEpisodes from "../../utils/EpisodesApi";
 import EpisodeList from "../EpisodeList/EpisodeList";
 import SearchBlock from "../SearchBlock/SearchBlock";
-import NotFoundBlock from "../NotFoundBlock/NotFoundBlock"
+import NotFoundBlock from "../NotFoundBlock/NotFoundBlock";
+import CurrentEpisode from "../CurrentEpisode/CurrentEpisode";
 
 function App() {
   const [episodes, setEpisodes] = useState([]);
@@ -67,13 +71,22 @@ function App() {
   return (
     <div className="app">
       <h1 className="app__title">Rick and Morty</h1>
-      <SearchBlock onSubmit={handleSubmitSearch} />
-      {(foundEpisodes.length !== 0 ) && <EpisodeList episodes={foundEpisodes} title="Найденные эпизоды" />}
-      {  isNotFound && <NotFoundBlock /> }
-      <EpisodeList episodes={episodesFirstSeason} title="1 сезон" />
-      <EpisodeList episodes={episodesSecondSeason} title="2 сезон" />
-      <EpisodeList episodes={episodesThirdSeason} title="3 сезон" />
-      <EpisodeList episodes={episodesFourthSeason} title="4 сезон" />
+      <Switch>
+        <Route exact path="/">
+          <SearchBlock onSubmit={handleSubmitSearch} />
+          {foundEpisodes.length !== 0 && (
+            <EpisodeList episodes={foundEpisodes} title="Найденные эпизоды" />
+          )}
+          {isNotFound && <NotFoundBlock />}
+          <EpisodeList episodes={episodesFirstSeason} title="1 сезон" />
+          <EpisodeList episodes={episodesSecondSeason} title="2 сезон" />
+          <EpisodeList episodes={episodesThirdSeason} title="3 сезон" />
+          <EpisodeList episodes={episodesFourthSeason} title="4 сезон" />
+        </Route>
+        <Route path="/episode/:id">
+          <CurrentEpisode />
+        </Route>
+      </Switch>
     </div>
   );
 }
